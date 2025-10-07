@@ -1,0 +1,27 @@
+---
+- name: libreoffice role
+  tags:
+    - libreoffice
+  block:
+
+  # flatpak
+  - name: Flatpak state {{ libreoffice.flatpak.state }}
+    become: true
+    community.general.flatpak:
+      name: org.libreoffice.LibreOffice
+      method: system
+      state: "{{ libreoffice.flatpak.state }}"
+
+  # apt
+  - name: Apt state {{ libreoffice.apt.state }}
+    become: true
+    ansible.builtin.apt:
+      name: 
+      - libreoffice
+      - libreoffice-writer
+      - libreoffice-calc
+      - libreoffice-impress
+      - libreoffice-base
+      - libreoffice-draw
+      - libreoffice-math
+      state: "{{ libreoffice.apt.state }}"

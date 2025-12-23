@@ -5,17 +5,18 @@
   block:
 
   # flatpak
-  - name: Flatpak state {{ libreoffice.flatpak.state }}
+  - name: Flatpak state {{ libreoffice_flatpak_state }}
     become: true
     community.general.flatpak:
       name: org.libreoffice.LibreOffice
       method: system
-      state: "{{ libreoffice.flatpak.state }}"
+      state: "{{ libreoffice_flatpak_state }}"
 
   # apt
-  - name: Apt state {{ libreoffice.apt.state }}
+  - name: Apt state {{ libreoffice_apt_state }}
     become: true
     ansible.builtin.apt:
+      state: "{{ libreoffice_apt_state }}"
       name: 
       - libreoffice
       - libreoffice-writer
@@ -24,4 +25,3 @@
       - libreoffice-base
       - libreoffice-draw
       - libreoffice-math
-      state: "{{ libreoffice.apt.state }}"

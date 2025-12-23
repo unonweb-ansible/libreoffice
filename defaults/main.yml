@@ -1,6 +1,3 @@
 ---
-libreoffice:
-  apt:
-    state: absent
-  flatpak:
-    state: present
+libreoffice_apt_state: absent
+libreoffice_flatpak_state: present
